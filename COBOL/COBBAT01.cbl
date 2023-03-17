@@ -27,7 +27,9 @@
       *                                                                 
        WORKING-STORAGE SECTION.                                         
        01 FLAGS.                                                        
-         05 LASTREC           PIC X VALUE SPACE.                        
+         05 LASTREC           PIC X VALUE SPACE.
+         05 FLAG-1            PIC X(02) VALUE 99.
+         05 FLAG-2            PIC X(04) VALUE zero.
       *                                                                 
       *------------------                                               
        PROCEDURE DIVISION.                                              
