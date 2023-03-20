@@ -81,8 +81,8 @@
            GOBACK.                           
       *                                                                 
        OPEN-FILES.                                                      
-           OPEN INPUT  INP-INPUT1.                                      
-           OPEN INPUT  INP-INPUT2.                                      
+           OPEN INPUT  INP-INPUT1                                      
+                       INP-INPUT2.                                      
            OPEN OUTPUT OUT-OUTPUT. 
       *
        OPEN-FILES-EX.
