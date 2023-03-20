@@ -5,6 +5,10 @@
       *--------------------                                             
        ENVIRONMENT DIVISION.                                            
       *--------------------                                             
+       CONFIGURATION SECTION.
+       SOURCE-COMPUTER. IBM-370 WITH DEBUGGING MODE.
+       OBJECT-COMPUTER. IBM-370.
+      *
        INPUT-OUTPUT SECTION.                                            
        FILE-CONTROL.                                                    
            SELECT INP-INPUT1  ASSIGN TO INDD1
@@ -49,7 +53,7 @@
       *
        01 WS-FS-ERROR.
           05 WS-ERROR            PIC X(30) VALUE SPACE.
-          05 WS-FILE-STATUS      PIC X(02) VALUE SPACE.                            
+          05 WS-FILE-STATUS      PIC X(02) VALUE SPACE.                         
       *                       
       *------------------                                               
       *-C O P Y B O O K S -                                             
@@ -80,9 +84,10 @@
       *
            GOBACK.                           
       *                                                                 
-       OPEN-FILES.                                                      
+       OPEN-FILES.
+      *                                                      
            OPEN INPUT  INP-INPUT1.                                      
-                       INP-INPUT2.                                      
+           OPEN INPUT  INP-INPUT2.                                      
            OPEN OUTPUT OUT-OUTPUT. 
       *
        OPEN-FILES-EX.
