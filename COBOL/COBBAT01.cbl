@@ -1,7 +1,7 @@
       *-----------------------                                          
        IDENTIFICATION DIVISION.                                         
       *-----------------------                                          
-       PROGRAM-ID.  COBBAT01.                                           
+       PROGRAM-ID.  COBBAT01                                          
       *--------------------                                             
        ENVIRONMENT DIVISION.                                            
       *--------------------                                             
