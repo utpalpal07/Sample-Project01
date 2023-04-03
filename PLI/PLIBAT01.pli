@@ -1,0 +1,62 @@
+ PLIBAT01: PROC OPTIONS(MAIN) RETURNS(DEC(12,2));
+
+ /**********************/
+ /* INPUT/OUTPUT FILES */
+ /**********************/
+ DCL INPUT1 FILE INPUT RECORD SEQUENTIAL 
+                 ENV(FB RECSIZE(100) BLKSIZE(0));
+ DCL INPUT2 FILE INPUT RECORD SEQUENTIAL 
+                 ENV(FB RECSIZE(100) BLKSIZE(0));
+ DCL OUTPUT FILE OUTPUT RECORD SEQUENTIAL 
+                 ENV(FB RECSIZE(100) BLKSIZE(0));
+
+ /***************************************
+ * INPUT FILE COPYBOOK
+ ***************************************/
+ %INCLUDE PLICPY01;
+ %INCLUDE PLICPY02;
+ /***************************************
+ * OUTPUT FILE COPYBOOK
+ ***************************************/
+ %INCLUDE PLICPY03;
+
+ /**************************************
+ * WORKING STORAGE DECLARATIONS
+ ****************************************/
+ DCL 1 FLAGS,
+       3 KEY_VALUE1                    CHAR(10) INIT (' '),
+       3 KEY_VALUE2                    CHAR(10) INIT (' ');
+
+ DCL 1 FS_FILE_STATUS,
+       3 FS_INPUT1,
+         5 FS_INPUT1_OK                CHAR(02) INIT ('00'),
+         5 FS_INPUT1_EOF               CHAR(02) INIT ('10'),
+       3 FS_INPUT2,
+         5 FS_INPUT2_OK                CHAR(02) INIT ('00'),
+         5 FS_INPUT2_EOF               CHAR(02) INIT ('10'),
+       3 FS_OUTPUT,
+         5 FS_OUTPUT_OK                CHAR(02) INIT ('00'),
+         5 FS_OUTPUT_EOF               CHAR(02) INIT ('10');
+
+ DCL 1 WS_FS_ERROR,
+       3 WS_ERROR                      CHAR(30) INIT (' '),
+       3 WS_FILE_STATUS                CHAR(02) INIT (' '); 
+
+/********************************
+ * CONDITION HANDLING ROUTINES  *
+ ********************************/
+
+ ON ENDFILE (INPUT1)
+    INPUT1_EOF = '1'B;
+
+ ON ENDFILE (INPUT2)
+    INPUT2_EOF = '1'B;
+       
+/*****************************************************
+ * MAIN PROGRAM ROUTINE                              *
+ *****************************************************/
+ CALL OPEN_FILES;
+
+ CALL READ_INP_INPUT1;
+
+ END PLIBAT01;
